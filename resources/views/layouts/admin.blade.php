@@ -13,7 +13,8 @@
 <body>
     {{-- header --}}
     @include('admin.public.header')
-    {{-- aside --}}
+    
+    {{-- left side --}}
     @include('admin.public.aside')
     
     {{-- right side --}}
@@ -24,7 +25,7 @@
           </ul>
           <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-              <iframe src='{{ url('/') }}}' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+              <iframe src='{{ url('/admin/welcome') }}' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
           </div>
         </div>

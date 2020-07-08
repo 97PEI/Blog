@@ -13,18 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::group(['prefix' => '/admin/'] ,function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'] ,function () {
     // 后台登录路由
-    Route::get('login', 'Admin\LoginController@login');
+    Route::get('login', 'LoginController@login');
 
     // 登录跳转
-    Route::post('doLogin', 'Admin\LoginController@doLogin');
+    Route::post('doLogin', 'LoginController@doLogin');
 
-    // 主页路由
-    Route::get('index', 'Admin\LoginController@index');
+    // 使用中间件判断是否登录
+    Route::group(['middleware' => 'islogin'] ,function () {
+        // 主页路由
+        Route::get('index', 'LoginController@index');
+
+        // 后台主页欢迎页路由
+        Route::get('welcome', 'LoginController@welcome');
+
+        // 后台退出登录路由
+        Route::get('logout', 'LoginController@logout');
+    });
 });

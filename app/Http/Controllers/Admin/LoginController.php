@@ -47,4 +47,18 @@ class LoginController extends Controller
     public function index () {
         return view('admin.index');
     }
+
+    // 后台欢迎页路由
+    public function welcome () {
+        return view('admin.welcome');
+    }
+
+    // 退出登录
+    public function logout () {
+        // 退出前先清除session
+        Session::flush();
+
+        // 重定向到登录页面
+        return redirect('/admin/login');
+    }
 }
