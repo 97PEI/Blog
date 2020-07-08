@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group(['prefix' => '/admin/'] ,function () {
+    // 后台登录路由
+    Route::get('login', 'Admin\LoginController@login');
+
+    // 登录跳转
+    Route::post('doLogin', 'Admin\LoginController@doLogin');
+
+    // 主页路由
+    Route::get('index', 'Admin\LoginController@index');
+});
