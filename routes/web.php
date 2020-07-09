@@ -30,8 +30,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'] ,function () {
 
         // 后台退出登录路由
         Route::get('logout', 'LoginController@logout');
-    });
 
-    // 用户资源路由
-    Route::resource('user', 'UserController');
+        // 用户资源路由
+        Route::resource('user', 'UserController');
+
+
+        // 用户资源路由
+        Route::resource('user', 'UserController');
+    });
 });
