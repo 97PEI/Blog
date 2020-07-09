@@ -47,7 +47,6 @@ class UserController extends Controller
         $email = $input['email'];
         $res = User::create(['user_name' => $username, 'user_pass' => $passwd, 'email' => $email]);
         
-        return 111;
         // 根据添加是否成功，给客户端返回一个json的反馈
         if($res) {
             $message = [

@@ -100,17 +100,22 @@
                     type: 'POST',
                     dataType: 'json',
                     data: data.field,
-                    success: function() {
+                    success: function(data) {
                         if(data.code == 0) {
-                            layer.alert(data.message, {icon:6});
+                            layer.alert(data.message, {icon:6}, function () {
+                                parent.location.reload();
+                            });
                         } else {
                             layer.alert(data.message, {icon:5});
                         }
                     },
-                    error: function () {
+                    error: function (data) {
                         console.log(data);
                     }
                 });
+
+                // 这里不写return 会造成上面ajax被cancel掉
+                return false;
             });
         });
     </script>
